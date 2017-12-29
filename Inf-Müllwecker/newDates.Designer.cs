@@ -40,10 +40,12 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(52, 91);
+            this.dateTimePicker.Location = new System.Drawing.Point(52, 82);
+            this.dateTimePicker.MinDate = new System.DateTime(2017, 12, 29, 0, 0, 0, 0);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(303, 26);
             this.dateTimePicker.TabIndex = 1;
+            this.dateTimePicker.Value = new System.DateTime(2017, 12, 29, 22, 59, 25, 0);
             // 
             // label1
             // 
@@ -109,7 +111,7 @@
             // 
             this.btnHinzufügen.BackColor = System.Drawing.Color.White;
             this.btnHinzufügen.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnHinzufügen.Location = new System.Drawing.Point(52, 187);
+            this.btnHinzufügen.Location = new System.Drawing.Point(52, 197);
             this.btnHinzufügen.Name = "btnHinzufügen";
             this.btnHinzufügen.Size = new System.Drawing.Size(303, 51);
             this.btnHinzufügen.TabIndex = 7;
@@ -121,7 +123,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(414, 260);
+            this.ClientSize = new System.Drawing.Size(414, 275);
             this.Controls.Add(this.btnHinzufügen);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);

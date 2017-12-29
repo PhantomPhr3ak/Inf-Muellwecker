@@ -47,12 +47,13 @@
             // 
             // btnNewDates
             // 
+            this.btnNewDates.BackColor = System.Drawing.Color.White;
             this.btnNewDates.Location = new System.Drawing.Point(183, 275);
             this.btnNewDates.Name = "btnNewDates";
             this.btnNewDates.Size = new System.Drawing.Size(218, 59);
             this.btnNewDates.TabIndex = 0;
             this.btnNewDates.Text = "Neue Daten hinzufügen";
-            this.btnNewDates.UseVisualStyleBackColor = true;
+            this.btnNewDates.UseVisualStyleBackColor = false;
             // 
             // pb_blau
             // 
@@ -96,12 +97,13 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(417, 275);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(218, 59);
             this.button1.TabIndex = 6;
             this.button1.Text = "Alle Daten zeigen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // lblDate
             // 
@@ -117,6 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(840, 368);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.button1);

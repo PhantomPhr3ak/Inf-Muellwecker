@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace Inf_Müllwecker
 {
-    public partial class newDates : Form
+    public partial class showAllDates : Form
     {
-        public newDates()
+        public showAllDates()
         {
             InitializeComponent();
         }
-
-        
     }
 }
