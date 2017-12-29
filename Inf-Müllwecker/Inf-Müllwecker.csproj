@@ -52,10 +52,19 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="müllwecker.cs" />
+    <Compile Include="newDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newDates.Designer.cs">
+      <DependentUpon>newDates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newDates.resx">
+      <DependentUpon>newDates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
