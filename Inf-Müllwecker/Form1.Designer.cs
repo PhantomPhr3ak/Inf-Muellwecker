@@ -38,6 +38,7 @@
             this.refresh = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_blau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_braun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_gelb)).BeginInit();
@@ -60,6 +61,7 @@
             this.pb_blau.Location = new System.Drawing.Point(28, 38);
             this.pb_blau.Name = "pb_blau";
             this.pb_blau.Size = new System.Drawing.Size(114, 129);
+            this.pb_blau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pb_blau.TabIndex = 1;
             this.pb_blau.TabStop = false;
             // 
@@ -95,6 +97,10 @@
             this.pb_grau.TabIndex = 5;
             this.pb_grau.TabStop = false;
             // 
+            // refresh
+            // 
+            this.refresh.Tick += new System.EventHandler(this.refresh_Tick);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
@@ -109,11 +115,20 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(308, 212);
+            this.lblDate.Location = new System.Drawing.Point(362, 210);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(191, 24);
+            this.lblDate.Size = new System.Drawing.Size(0, 24);
             this.lblDate.TabIndex = 7;
-            this.lblDate.Text = "Monday 20.12.2017";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(281, 210);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 22);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Morgen:";
             // 
             // mainWindow
             // 
@@ -121,6 +136,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(840, 368);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pb_grau);
@@ -131,6 +147,7 @@
             this.Controls.Add(this.btnNewDates);
             this.Name = "mainWindow";
             this.Text = "Müllwecker";
+            this.Load += new System.EventHandler(this.mainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_blau)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_braun)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_gelb)).EndInit();
@@ -152,6 +169,7 @@
         private System.Windows.Forms.Timer refresh;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label label1;
     }
 }
 

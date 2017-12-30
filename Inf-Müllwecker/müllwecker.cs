@@ -29,7 +29,7 @@ namespace Inf_Müllwecker
 
 
         //Grundfunktionen 
-        void lesen()
+        public void lesen()
         {
             string line;
             letzterEintrag = 0;
@@ -58,7 +58,7 @@ namespace Inf_Müllwecker
             reader.Close();
         }
 
-        void schreiben()
+        public void schreiben()
         {
             //Daten schreiben
             StreamWriter writer = new StreamWriter(@"C:\ProgramData\müllweckerSpeicher.txt");
@@ -73,7 +73,7 @@ namespace Inf_Müllwecker
 
 
         //Daten manipulieren
-        void neuerEintrag(DateTime datum, int farbe)
+        public void neuerEintrag(DateTime datum, int farbe)
         {
             //Arrays anpassen
             int aktuelleID = id[letzterEintrag]+1;
@@ -85,7 +85,7 @@ namespace Inf_Müllwecker
             schreiben();
         }
 
-        void eintragLöschen(int eintragNr)
+        public void eintragLöschen(int eintragNr)
         {
             //Überschreiben der Daten innerhalb des Arrays.
             //Letzter Wert ist doppelt vorhanden. Er wird allerdings nie abgerufen, da der letzte Wert reduziert wird.
@@ -104,20 +104,36 @@ namespace Inf_Müllwecker
             MessageBox.Show("Eintrag erfolgreich gelöscht!", "Erfolg", MessageBoxButtons.OK);
         }
 
+        public int[] getFarbenMorgen()
+        {
+            DateTime tomorrow = DateTime.Today;
+            int[] returnValue = new int[]{};
+            int j = 1;
+            for (int i = 0; i <= letzterEintrag; i++)
+            {
+                if (datum[i] == tomorrow)
+                {
+                    returnValue[j] = farbID[i];
+                    j++;
+                }
+            }
+            return returnValue;
+        }
+
 
 
         //Attribute auslesen
-        int[] getID()
+        public int[] getID()
         {
             return id;
         }
 
-        DateTime[] getDatum()
+        public DateTime[] getDatum()
         {
             return datum;
         }
 
-        int[] getFarbID()
+        public int[] getFarbID()
         {
             return farbID;
         }

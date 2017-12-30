@@ -16,5 +16,65 @@ namespace Inf_Müllwecker
         {
             InitializeComponent();
         }
+
+        /* Farbe ID's:
+         * 1 = Blau
+         * 2 = Braun
+         * 3 = Gelb
+         * 4 = Rot
+         * 5 = Grau
+         */
+
+        Müllwecker müllwecker = new Müllwecker();
+
+        private void mainWindow_Load(object sender, EventArgs e)
+        {
+            //Alle Farben unsichtbar machen
+            pb_rot.Visible = false;
+            pb_blau.Visible = false;
+            pb_braun.Visible = false;
+            pb_gelb.Visible = false;
+            pb_grau.Visible = false;
+
+            //Aktuelle Werte anzeigen
+            aktualisieren();
+        }
+
+        private void aktualisieren()
+        {
+            lblDate.Text = DateTime.Today.ToLongDateString();
+
+            int[] rFarbenMorgen = müllwecker.getFarbenMorgen();
+
+
+            for (int i = 1; i <= 2; i++)
+            {
+                if (rFarbenMorgen[i] == 1)
+                {
+                    pb_blau.Visible = true;
+                }
+                else if(rFarbenMorgen[i] == 2)
+                {
+                    pb_braun.Visible = true;
+                }
+                else if (rFarbenMorgen[i] == 3)
+                {
+                    pb_gelb.Visible = true;
+                }
+                else if (rFarbenMorgen[i] == 4)
+                {
+                    pb_rot.Visible = true;
+                }
+                else if (rFarbenMorgen[i] == 5)
+                {
+                    pb_grau.Visible = true;
+                }
+            }
+        }
+
+        private void refresh_Tick(object sender, EventArgs e)
+        {
+            aktualisieren();
+        }
     }
 }
