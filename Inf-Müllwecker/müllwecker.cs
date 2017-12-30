@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Inf_Müllwecker
 {
@@ -63,7 +64,7 @@ namespace Inf_Müllwecker
             StreamWriter writer = new StreamWriter(@"C:\ProgramData\müllweckerSpeicher.txt");
             for (int i = 0; i < letzterEintrag; i++)
             {
-                //String zusammensetzen um die Daten Zeilenweise auslesen zu können
+                //String zusammensetzen um die Daten zeilenweise auslesen zu können
                 writer.WriteLine(id[i] + ";" + datum[i] + ";" + farbID[i]);
             }
             writer.Close();
@@ -84,9 +85,23 @@ namespace Inf_Müllwecker
             schreiben();
         }
 
-        void eintragLöschen(int id)
+        void eintragLöschen(int eintragNr)
         {
-            
+            //Überschreiben der Daten innerhalb des Arrays.
+            //Letzter Wert ist doppelt vorhanden. Er wird allerdings nie abgerufen, da der letzte Wert reduziert wird.
+            for (int i = eintragNr; i < letzterEintrag; i++)
+            {
+                id[i] = id[i + 1];
+                datum[i] = datum[i + 1];
+                farbID[i] = farbID[i + 1];
+            }
+            letzterEintrag--;
+
+            //Daten speichern
+            schreiben();
+
+            //Bestätigungsnachricht
+            MessageBox.Show("Eintrag erfolgreich gelöscht!", "Erfolg", MessageBoxButtons.OK);
         }
 
 
