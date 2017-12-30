@@ -60,7 +60,7 @@ namespace Inf_Müllwecker
         void schreiben()
         {
             //Daten schreiben
-            StreamWriter writer = new StreamWriter(@"C:\müllweckerSpeicher.txt");
+            StreamWriter writer = new StreamWriter(@"C:\ProgramData\müllweckerSpeicher.txt");
             for (int i = 0; i < letzterEintrag; i++)
             {
                 //String zusammensetzen um die Daten Zeilenweise auslesen zu können
@@ -72,12 +72,19 @@ namespace Inf_Müllwecker
 
 
         //Daten manipulieren
-        void neuerEintrag()
+        void neuerEintrag(DateTime datum, int farbe)
         {
-            
+            //Arrays anpassen
+            int aktuelleID = id[letzterEintrag]+1;
+            this.id[letzterEintrag + 1] = aktuelleID;
+            this.datum[letzterEintrag + 1] = datum;
+            this.farbID[letzterEintrag + 1] = farbe;
+
+            //Daten speichern
+            schreiben();
         }
 
-        void eintragLöschen()
+        void eintragLöschen(int id)
         {
             
         }
