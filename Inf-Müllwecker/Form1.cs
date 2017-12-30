@@ -49,25 +49,23 @@ namespace Inf_Müllwecker
 
             for (int i = 1; i <= 2; i++)
             {
-                if (rFarbenMorgen[i] == 1)
+                switch (rFarbenMorgen[i])
                 {
-                    pb_blau.Visible = true;
-                }
-                else if(rFarbenMorgen[i] == 2)
-                {
-                    pb_braun.Visible = true;
-                }
-                else if (rFarbenMorgen[i] == 3)
-                {
-                    pb_gelb.Visible = true;
-                }
-                else if (rFarbenMorgen[i] == 4)
-                {
-                    pb_rot.Visible = true;
-                }
-                else if (rFarbenMorgen[i] == 5)
-                {
-                    pb_grau.Visible = true;
+                    case 1:
+                        pb_blau.Visible = true;
+                        break;
+                    case 2:
+                        pb_braun.Visible = true;
+                        break;
+                    case 3:
+                        pb_gelb.Visible = true;
+                        break;
+                    case 4:
+                        pb_rot.Visible = true;
+                        break;
+                    case 5:
+                        pb_grau.Visible = true;
+                        break;
                 }
             }
         }
