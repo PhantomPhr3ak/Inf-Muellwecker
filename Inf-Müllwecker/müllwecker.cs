@@ -22,7 +22,6 @@ namespace Inf_Müllwecker
         //letzterEintrag bezieht sich auf die ID
 
         //Attribute
-        private int[] id = new int[] { 0 }; 
         private DateTime[] datum = new DateTime[] {};
         private int[] farbID = new int[] { 0 };
         private int letzterEintrag;
@@ -33,10 +32,6 @@ namespace Inf_Müllwecker
         {
             string line;
             letzterEintrag = 0;
-            string lineID = null;
-            string lineFarbe = null;
-            string lineDatum = null;
-            int i = 0;
 
             //Daten abrufen
             FileStream fs = new FileStream("müllweckerSpeicher.txt", FileMode.OpenOrCreate, FileAccess.Read);
@@ -46,22 +41,13 @@ namespace Inf_Müllwecker
             {
                 line = reader.ReadLine();
 
-                //Splitting the string into 3 parts (id, datum, farbe) and deleting the semicolons
-                lineID = line.Substring(0, Convert.ToInt32(line.IndexOf(";"))-1);
-                id[i] = Convert.ToInt32(lineID);
-
-                line = line.Substring(Convert.ToInt32(line.IndexOf(";"))+1, line.Length);
-
-                lineDatum = line.Substring(0, Convert.ToInt32(line.IndexOf(";")) - 1);
-                datum[i] = Convert.ToDateTime(lineDatum);
-
-                line = line.Substring(Convert.ToInt32(line.IndexOf(";"))+1, line.Length);
-
-                lineFarbe = line;
-                farbID[i] = Convert.ToInt32(lineFarbe);
+                //Splitting the string into 2 parts (datum, farbe) and deleting the semicolons
+                datum[letzterEintrag] = Convert.ToDateTime(line.Substring(0,line.IndexOf(";") - 1));
+                
+                //Datum "abschneiden"
+                farbID[letzterEintrag] = Convert.ToInt32(line.Substring(line.IndexOf(";")+1, line.Length));
 
                 letzterEintrag++;
-                i++;
             }
             reader.Close();
             fs.Close();
@@ -75,8 +61,8 @@ namespace Inf_Müllwecker
                 StreamWriter writer = new StreamWriter("müllweckerSpeicher.txt");
                 for (int i = 0; i < letzterEintrag; i++)
                 {
-                    //String zusammensetzen um die Daten zeilenweise auslesen zu können
-                    writer.WriteLine(id[i] + ";" + datum[i] + ";" + farbID[i]);
+                    //String zusammensetzen um die Daten im nachhinein zeilenweise auslesen zu können
+                    writer.WriteLine(datum[i] + ";" + farbID[i]);
                 }
                 writer.Close();
             }
@@ -93,8 +79,6 @@ namespace Inf_Müllwecker
         public void neuerEintrag(DateTime datum, int farbe)
         {
             //Arrays anpassen
-            int aktuelleID = id[letzterEintrag]+1;
-            this.id[letzterEintrag + 1] = aktuelleID;
             this.datum[letzterEintrag + 1] = datum;
             this.farbID[letzterEintrag + 1] = farbe;
 
@@ -108,7 +92,6 @@ namespace Inf_Müllwecker
             //Letzter Wert ist doppelt vorhanden. Er wird allerdings nie abgerufen, da die Variable letzterWert reduziert wird.
             for (int i = eintragNr; i < letzterEintrag; i++)
             {
-                id[i] = id[i + 1];
                 datum[i] = datum[i + 1];
                 farbID[i] = farbID[i + 1];
             }
@@ -140,11 +123,6 @@ namespace Inf_Müllwecker
 
 
         //Attribute auslesen
-        public int[] getID()
-        {
-            return id;
-        }
-
         public DateTime[] getDatum()
         {
             return datum;
