@@ -22,8 +22,8 @@ namespace Inf_Müllwecker
         //letzterEintrag bezieht sich auf die ID
 
         //Attribute
-        private DateTime[] datum = new DateTime[] {};
-        private int[] farbID = new int[] { 0 };
+        private DateTime[] datum = new DateTime[10000];
+        private int[] farbID = new int[10000];
         private int letzterEintrag;
 
 
@@ -62,7 +62,7 @@ namespace Inf_Müllwecker
                 for (int i = 0; i < letzterEintrag; i++)
                 {
                     //String zusammensetzen um die Daten im nachhinein zeilenweise auslesen zu können
-                    writer.WriteLine(datum[i] + ";" + farbID[i]);
+                    writer.WriteLine(datum[i].ToLongDateString() + ";" + farbID[i]);
                 }
                 writer.Close();
             }
@@ -76,14 +76,51 @@ namespace Inf_Müllwecker
 
 
         //Daten manipulieren
-        public void neuerEintrag(DateTime datum, int farbe)
+        public void neuerEintrag(DateTime datum, Boolean[] farbe)
         {
             //Arrays anpassen
-            this.datum[letzterEintrag + 1] = datum;
-            this.farbID[letzterEintrag + 1] = farbe;
 
-            //Daten speichern
-            schreiben();
+            for (int i = 0; i < 2; i++)
+            {
+                if (farbe[0] == true)
+                {
+                    this.datum[letzterEintrag + 1] = datum;
+                    this.farbID[letzterEintrag + 1] = 1;
+                    farbe[0] = false;
+                    letzterEintrag++;
+                }
+                else if (farbe[1] == true)
+                {
+                    this.datum[letzterEintrag + 1] = datum;
+                    this.farbID[letzterEintrag + 1] = 2;
+                    farbe[1] = false;
+                    letzterEintrag++;
+                }
+                else if (farbe[2] == true)
+                {
+                    this.datum[letzterEintrag + 1] = datum;
+                    this.farbID[letzterEintrag + 1] = 3;
+                    farbe[2] = false;
+                    letzterEintrag++;
+                }
+                else if (farbe[3] == true)
+                {
+                    this.datum[letzterEintrag + 1] = datum;
+                    this.farbID[letzterEintrag + 1] = 4;
+                    farbe[3] = false;
+                    letzterEintrag++;
+                }
+                else if (farbe[4] == true)
+                {
+                    this.datum[letzterEintrag + 1] = datum;
+                    this.farbID[letzterEintrag + 1] = 5;
+                    farbe[4] = false;
+                    letzterEintrag++;
+                }
+
+                //Daten speichern
+                schreiben();
+            }
         }
 
         public void eintragLöschen(int eintragNr)

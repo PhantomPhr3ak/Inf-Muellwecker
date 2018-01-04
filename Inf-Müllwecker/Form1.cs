@@ -40,7 +40,7 @@ namespace Inf_Müllwecker
             //müllwecker.lesen();
 
             //Aktuelle Werte anzeigen
-            aktualisieren();
+            //aktualisieren();
         }
 
         private void aktualisieren()
@@ -76,6 +76,12 @@ namespace Inf_Müllwecker
         private void refresh_Tick(object sender, EventArgs e)
         {
             aktualisieren();
+        }
+
+        private void btnNewDates_Click(object sender, EventArgs e)
+        {
+            newDates neueDaten = new newDates();
+            neueDaten.Show();
         }
     }
 }

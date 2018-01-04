@@ -55,6 +55,7 @@
             this.btnNewDates.TabIndex = 0;
             this.btnNewDates.Text = "Neue Daten hinzufügen";
             this.btnNewDates.UseVisualStyleBackColor = false;
+            this.btnNewDates.Click += new System.EventHandler(this.btnNewDates_Click);
             // 
             // pb_blau
             // 
