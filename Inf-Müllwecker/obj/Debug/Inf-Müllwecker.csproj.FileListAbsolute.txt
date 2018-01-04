@@ -9,3 +9,15 @@ C:\Users\Kai\source\repos\Inf-Müllwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwec
 C:\Users\Kai\source\repos\Inf-Müllwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwecker.csproj.CoreCompileInputs.cache
 C:\Users\Kai\source\repos\Inf-Müllwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwecker.exe
 C:\Users\Kai\source\repos\Inf-Müllwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwecker.pdb
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\bin\Debug\Inf-Müllwecker.exe.config
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\bin\Debug\Inf-Müllwecker.exe
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\bin\Debug\Inf-Müllwecker.pdb
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwecker.csprojResolveAssemblyReference.cache
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf_Müllwecker.mainWindow.resources
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf_Müllwecker.newDates.resources
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf_Müllwecker.Properties.Resources.resources
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf_Müllwecker.showAllDates.resources
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwecker.csproj.GenerateResource.Cache
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwecker.csproj.CoreCompileInputs.cache
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwecker.exe
+C:\Users\Kai\Source\Repos\Inf-Muellwecker\Inf-Müllwecker\obj\Debug\Inf-Müllwecker.pdb

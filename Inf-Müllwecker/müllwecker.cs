@@ -22,9 +22,9 @@ namespace Inf_Müllwecker
         //letzterEintrag bezieht sich auf die ID
 
         //Attribute
-        private int[] id = new int[] { }; 
-        private DateTime[] datum = new DateTime[] { };
-        private int[] farbID = new int[] {};
+        private int[] id = new int[] { 0 }; 
+        private DateTime[] datum = new DateTime[] {};
+        private int[] farbID = new int[] { 0 };
         private int letzterEintrag;
 
 
@@ -36,38 +36,55 @@ namespace Inf_Müllwecker
             string lineID = null;
             string lineFarbe = null;
             string lineDatum = null;
+            int i = 0;
 
             //Daten abrufen
-            StreamReader reader = new StreamReader(@"C:\müllweckerSpeicher.txt");
-            for (int i = 0; (line = reader.ReadLine()) != null; i++)
+            FileStream fs = new FileStream("müllweckerSpeicher.txt", FileMode.OpenOrCreate, FileAccess.Read);
+            StreamReader reader = new StreamReader(fs);
+            
+            while(reader.Peek() != -1)
             {
+                line = reader.ReadLine();
+
                 //Splitting the string into 3 parts (id, datum, farbe) and deleting the semicolons
                 lineID = line.Substring(0, Convert.ToInt32(line.IndexOf(";"))-1);
                 id[i] = Convert.ToInt32(lineID);
 
-                line = line.Substring(Convert.ToInt32(line.IndexOf(";")), line.Length+1);
+                line = line.Substring(Convert.ToInt32(line.IndexOf(";"))+1, line.Length);
 
                 lineDatum = line.Substring(0, Convert.ToInt32(line.IndexOf(";")) - 1);
                 datum[i] = Convert.ToDateTime(lineDatum);
 
-                line = line.Substring(Convert.ToInt32(line.IndexOf(";")), line.Length+1);
+                line = line.Substring(Convert.ToInt32(line.IndexOf(";"))+1, line.Length);
 
                 lineFarbe = line;
                 farbID[i] = Convert.ToInt32(lineFarbe);
+
+                letzterEintrag++;
+                i++;
             }
             reader.Close();
+            fs.Close();
         }
 
         public void schreiben()
         {
-            //Daten schreiben
-            StreamWriter writer = new StreamWriter(@"C:\ProgramData\müllweckerSpeicher.txt");
-            for (int i = 0; i < letzterEintrag; i++)
+            try
             {
-                //String zusammensetzen um die Daten zeilenweise auslesen zu können
-                writer.WriteLine(id[i] + ";" + datum[i] + ";" + farbID[i]);
+                //Daten schreiben
+                StreamWriter writer = new StreamWriter("müllweckerSpeicher.txt");
+                for (int i = 0; i < letzterEintrag; i++)
+                {
+                    //String zusammensetzen um die Daten zeilenweise auslesen zu können
+                    writer.WriteLine(id[i] + ";" + datum[i] + ";" + farbID[i]);
+                }
+                writer.Close();
             }
-            writer.Close();
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
 
@@ -88,7 +105,7 @@ namespace Inf_Müllwecker
         public void eintragLöschen(int eintragNr)
         {
             //Überschreiben der Daten innerhalb des Arrays.
-            //Letzter Wert ist doppelt vorhanden. Er wird allerdings nie abgerufen, da der letzte Wert reduziert wird.
+            //Letzter Wert ist doppelt vorhanden. Er wird allerdings nie abgerufen, da die Variable letzterWert reduziert wird.
             for (int i = eintragNr; i < letzterEintrag; i++)
             {
                 id[i] = id[i + 1];
@@ -106,12 +123,12 @@ namespace Inf_Müllwecker
 
         public int[] getFarbenMorgen()
         {
-            DateTime tomorrow = DateTime.Today;
+            string tomorrow = DateTime.Today.AddDays(1).ToLongDateString();
             int[] returnValue = new int[]{};
             int j = 1;
             for (int i = 0; i <= letzterEintrag; i++)
             {
-                if (datum[i] == tomorrow)
+                if (datum != null && datum[i].ToString() == tomorrow)
                 {
                     returnValue[j] = farbID[i];
                     j++;

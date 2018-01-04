@@ -36,6 +36,9 @@ namespace Inf_Müllwecker
             pb_gelb.Visible = false;
             pb_grau.Visible = false;
 
+            //Daten laden
+            müllwecker.lesen();
+
             //Aktuelle Werte anzeigen
             aktualisieren();
         }
