@@ -105,6 +105,7 @@
             // 
             // refresh
             // 
+            this.refresh.Enabled = true;
             this.refresh.Tick += new System.EventHandler(this.refresh_Tick);
             // 
             // button1

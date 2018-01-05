@@ -69,8 +69,11 @@ namespace Inf_Müllwecker
                 StreamWriter writer = new StreamWriter("müllweckerSpeicher.txt");
                 for (int i = 0; i < letzterEintrag; i++)
                 {
-                    //String zusammensetzen um die Daten im nachhinein zeilenweise auslesen zu können
-                    writer.WriteLine(datum[i].ToString() + ";" + farbID[i]);
+                    if (DateTime.Compare(datum[i], DateTime.Today) >= 0)
+                    {
+                        //String zusammensetzen um die Daten im nachhinein zeilenweise auslesen zu können
+                        writer.WriteLine(datum[i].ToString() + ";" + farbID[i]);
+                    }
                 }
                 writer.Close();
             }
@@ -162,7 +165,7 @@ namespace Inf_Müllwecker
 
             //Daten speichern
             schreiben();
-
+            
             //Bestätigungsnachricht
             MessageBox.Show("Eintrag erfolgreich gelöscht!", "Erfolg", MessageBoxButtons.OK);
         }
