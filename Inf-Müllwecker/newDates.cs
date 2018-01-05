@@ -28,9 +28,10 @@ namespace Inf_Müllwecker
         public newDates()
         {
             InitializeComponent();
-            //müllwecker.lesen();
+            müllwecker.lesen();
 
-            dateTimePicker.Value.ToLocalTime();
+            dateTimePicker.MinDate = DateTime.Today;
+            dateTimePicker.Value = DateTime.Today;
         }
 
         private void btnHinzufügen_Click(object sender, EventArgs e)

@@ -80,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="showAllDates.resx">
       <DependentUpon>showAllDates.cs</DependentUpon>
@@ -96,6 +97,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blau.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\braun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gelb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\schwarz.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

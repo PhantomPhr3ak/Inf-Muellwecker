@@ -29,7 +29,6 @@ namespace Inf_Müllwecker
 
         private void mainWindow_Load(object sender, EventArgs e)
         {
-            
             //Daten laden
             müllwecker.lesen();
 
@@ -39,6 +38,15 @@ namespace Inf_Müllwecker
 
         private void aktualisieren()
         {
+            müllwecker.lesen();
+
+            //Alle Farben unsichtbar machen
+            pb_rot.Visible = false;
+            pb_blau.Visible = false;
+            pb_braun.Visible = false;
+            pb_gelb.Visible = false;
+            pb_grau.Visible = false;
+
             lblDate.Text = DateTime.Today.AddDays(1).ToLongDateString();
 
             int[] rFarbenMorgen;
@@ -67,15 +75,6 @@ namespace Inf_Müllwecker
                         break;
                 }
             }
-
-            //Alle Farben unsichtbar machen
-            pb_rot.Visible = false;
-            pb_blau.Visible = false;
-            pb_braun.Visible = false;
-            pb_gelb.Visible = false;
-            pb_grau.Visible = false;
-
-
         }
 
         private void refresh_Tick(object sender, EventArgs e)

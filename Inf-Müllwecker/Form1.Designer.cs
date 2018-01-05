@@ -59,6 +59,7 @@
             // 
             // pb_blau
             // 
+            this.pb_blau.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.blau;
             this.pb_blau.Location = new System.Drawing.Point(28, 38);
             this.pb_blau.Name = "pb_blau";
             this.pb_blau.Size = new System.Drawing.Size(114, 129);
@@ -68,6 +69,7 @@
             // 
             // pb_braun
             // 
+            this.pb_braun.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.braun;
             this.pb_braun.Location = new System.Drawing.Point(183, 38);
             this.pb_braun.Name = "pb_braun";
             this.pb_braun.Size = new System.Drawing.Size(114, 129);
@@ -76,6 +78,7 @@
             // 
             // pb_gelb
             // 
+            this.pb_gelb.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.gelb;
             this.pb_gelb.Location = new System.Drawing.Point(349, 38);
             this.pb_gelb.Name = "pb_gelb";
             this.pb_gelb.Size = new System.Drawing.Size(114, 129);
@@ -84,6 +87,7 @@
             // 
             // pb_rot
             // 
+            this.pb_rot.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.rot;
             this.pb_rot.Location = new System.Drawing.Point(521, 38);
             this.pb_rot.Name = "pb_rot";
             this.pb_rot.Size = new System.Drawing.Size(114, 129);
@@ -92,6 +96,7 @@
             // 
             // pb_grau
             // 
+            this.pb_grau.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.schwarz;
             this.pb_grau.Location = new System.Drawing.Point(698, 38);
             this.pb_grau.Name = "pb_grau";
             this.pb_grau.Size = new System.Drawing.Size(114, 129);
@@ -125,7 +130,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(281, 210);
+            this.label1.Location = new System.Drawing.Point(212, 212);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 22);
             this.label1.TabIndex = 8;

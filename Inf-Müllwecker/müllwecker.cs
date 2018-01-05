@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Inf_Müllwecker
 {
@@ -87,46 +88,64 @@ namespace Inf_Müllwecker
         {
             //Arrays anpassen
 
-            for (int i = 0; i < 2; i++)
-            {
-                if (farbe[0] == true)
-                {
-                    this.datum[letzterEintrag + 1] = datum;
-                    this.farbID[letzterEintrag + 1] = 1;
-                    farbe[0] = false;
-                    letzterEintrag++;
-                }
-                else if (farbe[1] == true)
-                {
-                    this.datum[letzterEintrag + 1] = datum;
-                    this.farbID[letzterEintrag + 1] = 2;
-                    farbe[1] = false;
-                    letzterEintrag++;
-                }
-                else if (farbe[2] == true)
-                {
-                    this.datum[letzterEintrag + 1] = datum;
-                    this.farbID[letzterEintrag + 1] = 3;
-                    farbe[2] = false;
-                    letzterEintrag++;
-                }
-                else if (farbe[3] == true)
-                {
-                    this.datum[letzterEintrag + 1] = datum;
-                    this.farbID[letzterEintrag + 1] = 4;
-                    farbe[3] = false;
-                    letzterEintrag++;
-                }
-                else if (farbe[4] == true)
-                {
-                    this.datum[letzterEintrag + 1] = datum;
-                    this.farbID[letzterEintrag + 1] = 5;
-                    farbe[4] = false;
-                    letzterEintrag++;
-                }
+            lesen();
 
+            int anzahlTrue = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                if (farbe[i])
+                {
+                    anzahlTrue++;
+                }
+            }
+
+            if (anzahlTrue <= 2)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    if (farbe[0] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 1;
+                        farbe[0] = false;
+                        letzterEintrag++;
+                    }
+                    else if (farbe[1] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 2;
+                        farbe[1] = false;
+                        letzterEintrag++;
+                    }
+                    else if (farbe[2] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 3;
+                        farbe[2] = false;
+                        letzterEintrag++;
+                    }
+                    else if (farbe[3] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 4;
+                        farbe[3] = false;
+                        letzterEintrag++;
+                    }
+                    else if (farbe[4] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 5;
+                        farbe[4] = false;
+                        letzterEintrag++;
+                    }
+
+                }
                 //Daten speichern
                 schreiben();
+            }
+            else
+            {
+                MessageBox.Show("Bitte nicht mehr als 2 Mülltonnen für einen Tag auswählen", "Fehler", MessageBoxButtons.OK);
             }
         }
 
@@ -164,7 +183,7 @@ namespace Inf_Müllwecker
             return returnValue;
         }
 
-
+        
 
         //Attribute auslesen
         public DateTime[] getDatum()
