@@ -19,10 +19,10 @@ namespace Inf_Müllwecker
          * 5 = Grau
          */
 
-        //letzterEintrag bezieht sich auf die ID
 
         //Attribute
         private DateTime[] datum = new DateTime[10000];
+        private string[] datumStrings = new string[10000];
         private int[] farbID = new int[10000];
         private int letzterEintrag;
 
@@ -31,29 +31,36 @@ namespace Inf_Müllwecker
         public void lesen()
         {
             string line;
-            letzterEintrag = 0;
+            letzterEintrag = -1;
 
             //Daten abrufen
             FileStream fs = new FileStream("müllweckerSpeicher.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader reader = new StreamReader(fs);
-            
+
+
             while(reader.Peek() != -1)
             {
                 line = reader.ReadLine();
 
-                //Splitting the string into 2 parts (datum, farbe) and deleting the semicolons
-                datum[letzterEintrag] = Convert.ToDateTime(line.Substring(0,line.IndexOf(";") - 1));
-                
-                //Datum "abschneiden"
-                farbID[letzterEintrag] = Convert.ToInt32(line.Substring(line.IndexOf(";")+1, line.Length));
-
                 letzterEintrag++;
+
+                //Splitting the string into 2 parts (datum, farbe) and deleting the semicolons
+                datumStrings[letzterEintrag] = line.Substring(0,line.IndexOf(";") - 1);
+                
+                farbID[letzterEintrag] = Convert.ToInt32(line.Substring(line.IndexOf(";")+1));
             }
+
+
             reader.Close();
             fs.Close();
+
+            for (int i = 0; i <= letzterEintrag; i++)
+            {
+                datum[i] = Convert.ToDateTime(datumStrings[i]);
+            }
         }
 
-        public void schreiben()
+        public void schreiben() 
         {
             try
             {
@@ -62,7 +69,7 @@ namespace Inf_Müllwecker
                 for (int i = 0; i < letzterEintrag; i++)
                 {
                     //String zusammensetzen um die Daten im nachhinein zeilenweise auslesen zu können
-                    writer.WriteLine(datum[i].ToLongDateString() + ";" + farbID[i]);
+                    writer.WriteLine(datum[i].ToString() + ";" + farbID[i]);
                 }
                 writer.Close();
             }
@@ -143,12 +150,12 @@ namespace Inf_Müllwecker
 
         public int[] getFarbenMorgen()
         {
-            string tomorrow = DateTime.Today.AddDays(1).ToLongDateString();
-            int[] returnValue = new int[]{};
-            int j = 1;
+            string tomorrow = DateTime.Today.AddDays(1).ToShortDateString();
+            int[] returnValue = new int[2]{0,0};
+            int j = 0;
             for (int i = 0; i <= letzterEintrag; i++)
             {
-                if (datum != null && datum[i].ToString() == tomorrow)
+                if (datum != null && datum[i].ToShortDateString() == tomorrow && farbID[i] != 0)
                 {
                     returnValue[j] = farbID[i];
                     j++;

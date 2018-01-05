@@ -29,6 +29,8 @@ namespace Inf_Müllwecker
         {
             InitializeComponent();
             //müllwecker.lesen();
+
+            dateTimePicker.Value.ToLocalTime();
         }
 
         private void btnHinzufügen_Click(object sender, EventArgs e)

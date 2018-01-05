@@ -1,9 +1,4 @@
-Montag, 1. Januar 0001;0
-Freitag, 5. Januar 2018;1
-Freitag, 5. Januar 2018;3
-Freitag, 5. Januar 2018;4
-Freitag, 5. Januar 2018;1
-Freitag, 5. Januar 2018;2
-Freitag, 5. Januar 2018;1
-Freitag, 5. Januar 2018;2
-Donnerstag, 25. Januar 2018;4
+01.01.0001 00:00:00;0
+06.01.2018 22:59:25;1
+25.01.2018 22:59:25;4
+10.01.2018 22:59:25;3
