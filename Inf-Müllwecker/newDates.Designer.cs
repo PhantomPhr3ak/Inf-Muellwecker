@@ -117,6 +117,7 @@
             this.btnHinzufügen.TabIndex = 7;
             this.btnHinzufügen.Text = "Hinzufügen";
             this.btnHinzufügen.UseVisualStyleBackColor = false;
+            this.btnHinzufügen.Click += new System.EventHandler(this.btnHinzufügen_Click);
             // 
             // newDates
             // 

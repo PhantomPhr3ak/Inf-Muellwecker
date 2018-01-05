@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Inf_Müllwecker
 {
@@ -19,55 +20,48 @@ namespace Inf_Müllwecker
          * 5 = Grau
          */
 
-        //letzterEintrag bezieht sich auf die ID
 
         //Attribute
-        private int[] id = new int[] { 0 }; 
-        private DateTime[] datum = new DateTime[] {};
-        private int[] farbID = new int[] { 0 };
-        private int letzterEintrag;
+        public DateTime[] datum = new DateTime[10000];
+        private string[] datumStrings = new string[10000];
+        public int[] farbID = new int[10000];
+        public int letzterEintrag;
 
 
         //Grundfunktionen 
         public void lesen()
         {
             string line;
-            letzterEintrag = 0;
-            string lineID = null;
-            string lineFarbe = null;
-            string lineDatum = null;
-            int i = 0;
+            letzterEintrag = -1;
 
             //Daten abrufen
             FileStream fs = new FileStream("müllweckerSpeicher.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader reader = new StreamReader(fs);
-            
+
+
             while(reader.Peek() != -1)
             {
                 line = reader.ReadLine();
 
-                //Splitting the string into 3 parts (id, datum, farbe) and deleting the semicolons
-                lineID = line.Substring(0, Convert.ToInt32(line.IndexOf(";"))-1);
-                id[i] = Convert.ToInt32(lineID);
-
-                line = line.Substring(Convert.ToInt32(line.IndexOf(";"))+1, line.Length);
-
-                lineDatum = line.Substring(0, Convert.ToInt32(line.IndexOf(";")) - 1);
-                datum[i] = Convert.ToDateTime(lineDatum);
-
-                line = line.Substring(Convert.ToInt32(line.IndexOf(";"))+1, line.Length);
-
-                lineFarbe = line;
-                farbID[i] = Convert.ToInt32(lineFarbe);
-
                 letzterEintrag++;
-                i++;
+
+                //Splitting the string into 2 parts (datum, farbe) and deleting the semicolons
+                datumStrings[letzterEintrag] = line.Substring(0,line.IndexOf(";") - 1);
+                
+                farbID[letzterEintrag] = Convert.ToInt32(line.Substring(line.IndexOf(";")+1));
             }
+
+
             reader.Close();
             fs.Close();
+
+            for (int i = 0; i <= letzterEintrag; i++)
+            {
+                datum[i] = Convert.ToDateTime(datumStrings[i]);
+            }
         }
 
-        public void schreiben()
+        public void schreiben() 
         {
             try
             {
@@ -75,8 +69,11 @@ namespace Inf_Müllwecker
                 StreamWriter writer = new StreamWriter("müllweckerSpeicher.txt");
                 for (int i = 0; i < letzterEintrag; i++)
                 {
-                    //String zusammensetzen um die Daten zeilenweise auslesen zu können
-                    writer.WriteLine(id[i] + ";" + datum[i] + ";" + farbID[i]);
+                    if (DateTime.Compare(datum[i], DateTime.Today) >= 0)
+                    {
+                        //String zusammensetzen um die Daten im nachhinein zeilenweise auslesen zu können
+                        writer.WriteLine(datum[i].ToString() + ";" + farbID[i]);
+                    }
                 }
                 writer.Close();
             }
@@ -90,16 +87,69 @@ namespace Inf_Müllwecker
 
 
         //Daten manipulieren
-        public void neuerEintrag(DateTime datum, int farbe)
+        public void neuerEintrag(DateTime datum, Boolean[] farbe)
         {
             //Arrays anpassen
-            int aktuelleID = id[letzterEintrag]+1;
-            this.id[letzterEintrag + 1] = aktuelleID;
-            this.datum[letzterEintrag + 1] = datum;
-            this.farbID[letzterEintrag + 1] = farbe;
 
-            //Daten speichern
-            schreiben();
+            lesen();
+
+            int anzahlTrue = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                if (farbe[i])
+                {
+                    anzahlTrue++;
+                }
+            }
+
+            if (anzahlTrue <= 2)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    if (farbe[0] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 1;
+                        farbe[0] = false;
+                        letzterEintrag++;
+                    }
+                    else if (farbe[1] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 2;
+                        farbe[1] = false;
+                        letzterEintrag++;
+                    }
+                    else if (farbe[2] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 3;
+                        farbe[2] = false;
+                        letzterEintrag++;
+                    }
+                    else if (farbe[3] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 4;
+                        farbe[3] = false;
+                        letzterEintrag++;
+                    }
+                    else if (farbe[4] == true)
+                    {
+                        this.datum[letzterEintrag + 1] = datum;
+                        this.farbID[letzterEintrag + 1] = 5;
+                        farbe[4] = false;
+                        letzterEintrag++;
+                    }
+
+                }
+                //Daten speichern
+                schreiben();
+            }
+            else
+            {
+                MessageBox.Show("Bitte nicht mehr als 2 Mülltonnen für einen Tag auswählen", "Fehler", MessageBoxButtons.OK);
+            }
         }
 
         public void eintragLöschen(int eintragNr)
@@ -108,7 +158,6 @@ namespace Inf_Müllwecker
             //Letzter Wert ist doppelt vorhanden. Er wird allerdings nie abgerufen, da die Variable letzterWert reduziert wird.
             for (int i = eintragNr; i < letzterEintrag; i++)
             {
-                id[i] = id[i + 1];
                 datum[i] = datum[i + 1];
                 farbID[i] = farbID[i + 1];
             }
@@ -116,19 +165,19 @@ namespace Inf_Müllwecker
 
             //Daten speichern
             schreiben();
-
+            
             //Bestätigungsnachricht
             MessageBox.Show("Eintrag erfolgreich gelöscht!", "Erfolg", MessageBoxButtons.OK);
         }
 
         public int[] getFarbenMorgen()
         {
-            string tomorrow = DateTime.Today.AddDays(1).ToLongDateString();
-            int[] returnValue = new int[]{};
-            int j = 1;
+            string tomorrow = DateTime.Today.AddDays(1).ToShortDateString();
+            int[] returnValue = new int[2]{0,0};
+            int j = 0;
             for (int i = 0; i <= letzterEintrag; i++)
             {
-                if (datum != null && datum[i].ToString() == tomorrow)
+                if (datum != null && datum[i].ToShortDateString() == tomorrow && farbID[i] != 0)
                 {
                     returnValue[j] = farbID[i];
                     j++;
@@ -137,14 +186,9 @@ namespace Inf_Müllwecker
             return returnValue;
         }
 
-
+        
 
         //Attribute auslesen
-        public int[] getID()
-        {
-            return id;
-        }
-
         public DateTime[] getDatum()
         {
             return datum;

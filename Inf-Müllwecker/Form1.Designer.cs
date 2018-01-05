@@ -39,6 +39,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.warnton = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pb_blau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_braun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_gelb)).BeginInit();
@@ -55,9 +56,11 @@
             this.btnNewDates.TabIndex = 0;
             this.btnNewDates.Text = "Neue Daten hinzufügen";
             this.btnNewDates.UseVisualStyleBackColor = false;
+            this.btnNewDates.Click += new System.EventHandler(this.btnNewDates_Click);
             // 
             // pb_blau
             // 
+            this.pb_blau.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.blau;
             this.pb_blau.Location = new System.Drawing.Point(28, 38);
             this.pb_blau.Name = "pb_blau";
             this.pb_blau.Size = new System.Drawing.Size(114, 129);
@@ -67,6 +70,7 @@
             // 
             // pb_braun
             // 
+            this.pb_braun.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.braun;
             this.pb_braun.Location = new System.Drawing.Point(183, 38);
             this.pb_braun.Name = "pb_braun";
             this.pb_braun.Size = new System.Drawing.Size(114, 129);
@@ -75,6 +79,7 @@
             // 
             // pb_gelb
             // 
+            this.pb_gelb.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.gelb;
             this.pb_gelb.Location = new System.Drawing.Point(349, 38);
             this.pb_gelb.Name = "pb_gelb";
             this.pb_gelb.Size = new System.Drawing.Size(114, 129);
@@ -83,6 +88,7 @@
             // 
             // pb_rot
             // 
+            this.pb_rot.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.rot;
             this.pb_rot.Location = new System.Drawing.Point(521, 38);
             this.pb_rot.Name = "pb_rot";
             this.pb_rot.Size = new System.Drawing.Size(114, 129);
@@ -91,6 +97,7 @@
             // 
             // pb_grau
             // 
+            this.pb_grau.BackgroundImage = global::Inf_Müllwecker.Properties.Resources.schwarz;
             this.pb_grau.Location = new System.Drawing.Point(698, 38);
             this.pb_grau.Name = "pb_grau";
             this.pb_grau.Size = new System.Drawing.Size(114, 129);
@@ -99,6 +106,7 @@
             // 
             // refresh
             // 
+            this.refresh.Enabled = true;
             this.refresh.Tick += new System.EventHandler(this.refresh_Tick);
             // 
             // button1
@@ -110,6 +118,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Alle Daten zeigen";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblDate
             // 
@@ -124,11 +133,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(281, 210);
+            this.label1.Location = new System.Drawing.Point(212, 212);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 22);
             this.label1.TabIndex = 8;
             this.label1.Text = "Morgen:";
+            // 
+            // warnton
+            // 
+            this.warnton.Enabled = true;
+            this.warnton.Interval = 12000000;
             // 
             // mainWindow
             // 
@@ -170,6 +184,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer warnton;
     }
 }
 
