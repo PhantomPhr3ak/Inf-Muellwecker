@@ -88,5 +88,11 @@ namespace Inf_Müllwecker
             newDates neueDaten = new newDates();
             neueDaten.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            showAllDates alleDaten = new showAllDates();
+            alleDaten.Show();
+        }
     }
 }

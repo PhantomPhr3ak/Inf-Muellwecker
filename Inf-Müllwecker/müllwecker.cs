@@ -22,10 +22,10 @@ namespace Inf_Müllwecker
 
 
         //Attribute
-        private DateTime[] datum = new DateTime[10000];
+        public DateTime[] datum = new DateTime[10000];
         private string[] datumStrings = new string[10000];
-        private int[] farbID = new int[10000];
-        private int letzterEintrag;
+        public int[] farbID = new int[10000];
+        public int letzterEintrag;
 
 
         //Grundfunktionen 
