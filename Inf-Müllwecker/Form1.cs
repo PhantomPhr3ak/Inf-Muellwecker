@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,7 +26,7 @@ namespace Inf_Müllwecker
          * 5 = Grau
          */
 
-        Müllwecker müllwecker = new Müllwecker();
+        private Müllwecker müllwecker = new Müllwecker();
 
         private void mainWindow_Load(object sender, EventArgs e)
         {

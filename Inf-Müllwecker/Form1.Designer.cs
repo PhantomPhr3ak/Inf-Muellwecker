@@ -39,6 +39,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.warnton = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pb_blau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_braun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_gelb)).BeginInit();
@@ -137,6 +138,11 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Morgen:";
             // 
+            // warnton
+            // 
+            this.warnton.Enabled = true;
+            this.warnton.Interval = 12000000;
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -177,6 +183,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer warnton;
     }
 }
 
