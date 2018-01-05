@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.lstAbholzeiten = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.refresh = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -65,11 +63,7 @@
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Ausgewählten Eintrag löschen";
             this.btnDelete.UseVisualStyleBackColor = false;
-            // 
-            // refresh
-            // 
-            this.refresh.Enabled = true;
-            this.refresh.Tick += new System.EventHandler(this.refresh_Tick);
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // button1
             // 
@@ -104,7 +98,6 @@
         private System.Windows.Forms.ListBox lstAbholzeiten;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Timer refresh;
         private System.Windows.Forms.Button button1;
     }
 }
