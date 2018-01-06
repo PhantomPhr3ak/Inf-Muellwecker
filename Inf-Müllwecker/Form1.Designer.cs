@@ -40,6 +40,7 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.warnton = new System.Windows.Forms.Timer(this.components);
+            this.warntonAus = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_blau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_braun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_gelb)).BeginInit();
@@ -143,13 +144,25 @@
             // 
             this.warnton.Enabled = true;
             this.warnton.Interval = 12000000;
+            this.warnton.Tick += new System.EventHandler(this.warnton_Tick);
+            // 
+            // warntonAus
+            // 
+            this.warntonAus.AutoSize = true;
+            this.warntonAus.Location = new System.Drawing.Point(12, 352);
+            this.warntonAus.Name = "warntonAus";
+            this.warntonAus.Size = new System.Drawing.Size(185, 24);
+            this.warntonAus.TabIndex = 9;
+            this.warntonAus.Text = "Warnton deaktivieren";
+            this.warntonAus.UseVisualStyleBackColor = true;
             // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(840, 368);
+            this.ClientSize = new System.Drawing.Size(840, 388);
+            this.Controls.Add(this.warntonAus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.button1);
@@ -185,6 +198,7 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer warnton;
+        private System.Windows.Forms.CheckBox warntonAus;
     }
 }
 
