@@ -67,7 +67,7 @@ namespace Inf_Müllwecker
             {
                 //Daten schreiben
                 StreamWriter writer = new StreamWriter("müllweckerSpeicher.txt");
-                for (int i = 0; i < letzterEintrag; i++)
+                for (int i = 0; i <= letzterEintrag; i++)
                 {
                     if (DateTime.Compare(datum[i], DateTime.Today) >= 0)
                     {

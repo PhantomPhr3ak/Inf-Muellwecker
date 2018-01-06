@@ -56,6 +56,7 @@ namespace Inf_Müllwecker
             int[] rFarbenMorgen;
             rFarbenMorgen = müllwecker.getFarbenMorgen();
             
+            //Richtige Farben wieder sichtbar machen
             for (int i = 0; i <= 1; i++)
             {
                 switch (rFarbenMorgen[i])
