@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,6 +36,8 @@ namespace Inf_Müllwecker
 
             //Aktuelle Werte anzeigen
             aktualisieren();
+
+            warntonAus.Checked = false;
         }
 
         private void aktualisieren()
@@ -53,6 +56,7 @@ namespace Inf_Müllwecker
             int[] rFarbenMorgen;
             rFarbenMorgen = müllwecker.getFarbenMorgen();
             
+            //Richtige Farben wieder sichtbar machen
             for (int i = 0; i <= 1; i++)
             {
                 switch (rFarbenMorgen[i])
@@ -93,6 +97,20 @@ namespace Inf_Müllwecker
         {
             showAllDates alleDaten = new showAllDates();
             alleDaten.Show();
+        }
+
+        private void warnton_Tick(object sender, EventArgs e)
+        {
+            //Überprüfen, ob es heute überhaupt Mülltonnen rauszustellen gibt und ob der Ton deaktiviert wurde
+            if (müllwecker.getFarbenMorgen()[0] != 0 && warntonAus.Checked == false)
+            {
+                //Vier Töne mit jeweils 2 Sekunden Zeitabstand
+                for (int i = 0; i < 4; i++)
+                {
+                    SystemSounds.Beep.Play();
+                    Thread.Sleep(2000);
+                }
+            }
         }
     }
 }

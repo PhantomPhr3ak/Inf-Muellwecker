@@ -38,13 +38,28 @@ namespace Inf_Müllwecker
         {
             DateTime datum = dateTimePicker.Value;
 
+            //mülltonne[] leeren
+            for (int i = 0; i < 5; i++)
+            {
+                mülltonne[i] = false;
+            }
+
+            //Checkbox-Daten auslesen
             mülltonne[0] = checkBox1.Checked;
             mülltonne[1] = checkBox2.Checked;
             mülltonne[2] = checkBox3.Checked;
             mülltonne[3] = checkBox4.Checked;
             mülltonne[4] = checkBox5.Checked;
 
+            //Daten ins Array schreiben und anschließend speichern
             müllwecker.neuerEintrag(datum, mülltonne);
+
+            //Alles wieder zurücksetzen
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
         }
     }
 }

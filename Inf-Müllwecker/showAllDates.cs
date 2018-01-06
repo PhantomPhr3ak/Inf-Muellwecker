@@ -16,6 +16,20 @@ namespace Inf_Müllwecker
         {
             InitializeComponent();
             müllwecker.lesen();
+
+            //Listbox leeren
+            lstAbholzeiten.Items.Clear();
+
+            string zeile;
+
+            //Daten in ListBox schreiben
+            for (int i = 0; i < müllwecker.letzterEintrag; i++)
+            {
+                zeile = müllwecker.datum[i].ToLongDateString() + "    " + müllwecker.farbID[i].ToString();
+                lstAbholzeiten.Items.Add(zeile);
+            }
+
+            lstAbholzeiten.SelectedIndex = 0;
         }
 
         //Attribute
