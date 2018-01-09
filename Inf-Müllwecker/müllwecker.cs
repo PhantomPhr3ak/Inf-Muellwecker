@@ -177,7 +177,8 @@ namespace Inf_Müllwecker
             int j = 0;
             for (int i = 0; i <= letzterEintrag; i++)
             {
-                if (datum != null && datum[i].ToShortDateString() == tomorrow && farbID[i] != 0)
+                // j < 2 damit nicht mehr als 2 Mülltonnen Daten ausgelesen werden. Somit werden die Daten, die zuerst eingegeben wurdenm, bevorzugt behandelt.
+                if (datum != null && datum[i].ToShortDateString() == tomorrow && farbID[i] != 0 && j < 2)
                 {
                     returnValue[j] = farbID[i];
                     j++;
